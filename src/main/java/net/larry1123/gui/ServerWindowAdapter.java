@@ -3,29 +3,23 @@ package net.larry1123.gui;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import net.minecraft.server.DedicatedServer;
+import net.canarymod.Canary;
 
 public class ServerWindowAdapter extends WindowAdapter {
 
-    // $FF: synthetic field
-    final DedicatedServer a;
-
-    ServerWindowAdapter(DedicatedServer var1) {
-	a = var1;
-    }
-
+    @Override
     public void windowClosing(WindowEvent var1) {
-	a.n();
+        Canary.getServer().initiateShutdown();
 
-	while (!a.ac()) {
-	    try {
-		Thread.sleep(100L);
-	    } catch (InterruptedException var3) {
-		var3.printStackTrace();
-	    }
-	}
+        while (!Canary.getServer().isRunning()) {
+            try {
+                Thread.sleep(100L);
+            } catch (InterruptedException var3) {
+                var3.printStackTrace();
+            }
+        }
 
-	System.exit(0);
+        System.exit(0);
     }
 
 }

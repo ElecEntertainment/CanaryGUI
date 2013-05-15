@@ -9,32 +9,32 @@ public class CommandLog {
     private int index = 0;
 
     public void addCommand(String command) {
-	commands.push(command);
-	if (index >= 39) {
-	    commands.removeLast();
-	}
-	resetIndex();
+        commands.addFirst(command);
+        if (commands.size() >= 40) {
+            commands.removeLast();
+        }
+        resetIndex();
     }
 
     public void clear() {
-	index = 0;
-	commands.clear();
+        resetIndex();
+        commands.clear();
     }
 
     public int getIndex() {
-	return index;
+        return index;
     }
 
     public boolean isEmpty() {
-	return commands.isEmpty();
+        return commands.isEmpty();
     }
 
     public boolean isMax() {
-	return (index == 39);
+        return (getIndex() == 39);
     }
 
     public boolean isMin() {
-	return (index == 0);
+        return (getIndex() == 0);
     }
 
     /**
@@ -43,11 +43,26 @@ public class CommandLog {
      * @return
      */
     public String nextCommand() {
-	if (index < 40) {
-	    return commands.get(index++);
-	} else {
-	    return commands.get(39);
-	}
+        String ret = "";
+        try {
+            if (getIndex() - 1 <= commands.size()) {
+                if (getIndex() <= 39) {
+                    ret =  commands.get(index + 1);
+                    index++;
+                } else {
+                    ret = commands.get(39);
+                }
+            } else {
+                if (getIndex() <= 39) {
+                    ret =  commands.get(index);
+                } else {
+                    ret = commands.get(39);
+                }
+            }
+        } catch (IndexOutOfBoundsException e) {
+            ret = commands.get(getIndex());
+        }
+        return ret;
     }
 
     /**
@@ -56,15 +71,15 @@ public class CommandLog {
      * @return
      */
     public String preCommand() {
-	if (index >= 0) {
-	    return commands.get(--index);
-	} else {
-	    return "";
-	}
+        if (getIndex() >= 0) {
+            return commands.get(--index);
+        } else {
+            return "";
+        }
     }
 
     public void resetIndex() {
-	index = 0;
+        index = 0;
     }
 
 }

@@ -6,12 +6,12 @@ import java.awt.event.ActionListener;
 public class Reload implements ActionListener {
 
     public Reload() {
-	//
+        //
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-	// TODO Auto-generated method stub
+        // TODO Auto-generated method stub
     }
 
 }

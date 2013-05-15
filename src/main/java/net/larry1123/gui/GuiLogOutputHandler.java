@@ -14,8 +14,8 @@ public class GuiLogOutputHandler extends Handler {
     private final JTextArea d;
 
     public GuiLogOutputHandler(JTextArea var1) {
-	setFormatter(a);
-	d = var1;
+        setFormatter(a);
+        d = var1;
     }
 
     @Override
@@ -28,16 +28,16 @@ public class GuiLogOutputHandler extends Handler {
 
     @Override
     public void publish(LogRecord var1) {
-	int var2 = d.getDocument().getLength();
-	d.append(a.format(var1));
-	d.setCaretPosition(d.getDocument().getLength());
-	int var3 = d.getDocument().getLength() - var2;
-	if (b[c] != 0) {
-	    d.replaceRange("", 0, b[c]);
-	}
+        int var2 = d.getDocument().getLength();
+        d.append(a.format(var1));
+        d.setCaretPosition(d.getDocument().getLength());
+        int var3 = d.getDocument().getLength() - var2;
+        if (b[c] != 0) {
+            d.replaceRange("", 0, b[c]);
+        }
 
-	b[c] = var3;
-	c = (c + 1) % 1024;
+        b[c] = var3;
+        c = (c + 1) % 1024;
     }
 
 }

@@ -9,12 +9,12 @@ public class GuiStatsListener implements ActionListener {
     final GuiStatsComponent a;
 
     GuiStatsListener(GuiStatsComponent var1) {
-	a = var1;
+        a = var1;
     }
 
     @Override
     public void actionPerformed(ActionEvent var1) {
-	GuiStatsComponent.a(a);
+        GuiStatsComponent.a(a);
     }
 
 }
