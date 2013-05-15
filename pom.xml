@@ -28,34 +28,6 @@
 				</configuration>
 			</plugin>
 
-			<!-- Dependency shader -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>2.0</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<finalName>${project.artifactId}-${project.version}</finalName>
-					<filters>
-						<filter>
-							<artifact>*:*</artifact>
-							<excludes>
-								<exclude>META-INF/*.SF</exclude>
-								<exclude>META-INF/*.DSA</exclude>
-								<exclude>META-INF/*.RSA</exclude>
-							</excludes>
-						</filter>
-					</filters>
-				</configuration>
-			</plugin>
-
 			<!-- JAR creation plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -68,10 +40,6 @@
 							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 						</manifest>
-						<manifestEntries>
-							<Main-Class>net.canarymod.Main</Main-Class>
-							<Class-Path>lib/CanaryLib.jar</Class-Path>
-						</manifestEntries>
 					</archive>
 				</configuration>
 			</plugin>
@@ -98,19 +66,20 @@
 			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>net.canarymod</groupId>
-			<artifactId>CanaryMod</artifactId>
-		</dependency>
-	</dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>net.canarymod</groupId>
-				<artifactId>CanaryMod</artifactId>
-				<version>0.7-SNAPSHOT</version>
+				<artifactId>CanaryLib</artifactId>
+				<version>0.8-SNAPSHOT</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>net.canarymod</groupId>
+            <artifactId>CanaryLib</artifactId>
+            <version>0.8-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>
