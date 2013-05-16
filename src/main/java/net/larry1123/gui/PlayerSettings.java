@@ -23,7 +23,9 @@ import javax.swing.border.EmptyBorder;
 import net.canarymod.api.entity.living.humanoid.Player;
 import net.larry1123.gui.player.DisplayName;
 import net.larry1123.gui.player.Health;
-import net.larry1123.gui.player.Reload;
+import net.larry1123.gui.player.Reloader;
+import net.larry1123.gui.player.Reseter;
+import net.larry1123.gui.player.Saver;
 
 public class PlayerSettings extends JFrame {
 
@@ -55,9 +57,11 @@ public class PlayerSettings extends JFrame {
         setJMenuBar(menuBar);
 
         JMenuItem mntmSave = new JMenuItem("Save");
+        mntmSave.addActionListener(new Saver());
         menuBar.add(mntmSave);
 
         JMenuItem mntmReset = new JMenuItem("Reset");
+        mntmReset.addActionListener(new Reseter());
         menuBar.add(mntmReset);
 
         Component horizontalStrut_3 = Box.createHorizontalStrut(100);
@@ -71,7 +75,7 @@ public class PlayerSettings extends JFrame {
         contentPane.add(panel_1, BorderLayout.SOUTH);
 
         Button button = new Button("Reload");
-        button.addActionListener(new Reload());
+        button.addActionListener(new Reloader());
         panel_1.add(button);
 
         JTabbedPane tabbedPane = new JTabbedPane(SwingConstants.TOP);

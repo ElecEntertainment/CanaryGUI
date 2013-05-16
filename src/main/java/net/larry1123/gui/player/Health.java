@@ -4,12 +4,14 @@ import javax.swing.JTextField;
 
 import net.canarymod.api.entity.living.humanoid.Player;
 
-public class Health extends JTextField implements Reloader {
+public class Health extends JTextField implements Reload, Save, Reset {
 
     private final Player player;
 
     public Health(Player player) {
-        Reload.addUpdater(this);
+        Reloader.addUpdater(this);
+        Saver.addSaver(this);
+        Reseter.addReset(this);
         this.player = player;
         reset();
     }
@@ -17,6 +19,11 @@ public class Health extends JTextField implements Reloader {
     @Override
     public void reset() {
         setText("" + player.getHealth());
+    }
+
+    @Override
+    public void save() {
+        player.setHealth(Integer.parseInt(this.getText()));
     }
 
 }
