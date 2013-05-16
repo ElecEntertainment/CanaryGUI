@@ -25,8 +25,8 @@ ListSelectionListener {
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if ((playerBox.getSelectedValue() != null) && !isRunning) {
-            Logman.getLogman("Box").info(playerBox.getSelectedValue());
-            Player test = Canary.getServer().matchPlayer(playerBox.getSelectedValue());
+            Logman.getLogman("Box").info((String) playerBox.getSelectedValue());
+            Player test = Canary.getServer().getPlayer((String) playerBox.getSelectedValue());
             if (test == null) {
                 Logman.getLogman("GUI").info("DERP");
             } else {

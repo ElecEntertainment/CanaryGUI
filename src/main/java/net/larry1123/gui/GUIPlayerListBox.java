@@ -7,7 +7,7 @@ import javax.swing.JList;
 import net.canarymod.Canary;
 
 @SuppressWarnings("serial")
-public class GUIPlayerListBox extends JList<String> implements net.larry1123.gui.tick.TickUpdate {
+public class GUIPlayerListBox extends JList implements net.larry1123.gui.tick.TickUpdate {
 
     private int b = 0;
 
