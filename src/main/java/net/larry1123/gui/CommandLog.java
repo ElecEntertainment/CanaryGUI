@@ -1,12 +1,14 @@
 package net.larry1123.gui;
 
 import java.util.LinkedList;
+import java.util.logging.Logger;
 
 public class CommandLog {
 
     private final LinkedList<String> commands = new LinkedList<String>();
 
     private int index = 0;
+    private boolean first = true;
 
     public void addCommand(String command) {
         commands.addFirst(command);
@@ -45,16 +47,23 @@ public class CommandLog {
     public String nextCommand() {
         String ret = "";
         try {
+            Logger.getLogger("GUI").info("" + getIndex());
             if (getIndex() - 1 <= commands.size()) {
                 if (getIndex() <= 39) {
-                    ret =  commands.get(index + 1);
-                    index++;
+                    if (first) {
+                        ret = commands.get(getIndex());
+                        first = false;
+                    } else {
+                        ret = commands.get(getIndex() + 1);
+                        index++;
+                    }
+                    Logger.getLogger("GUI").info("" + getIndex());
                 } else {
                     ret = commands.get(39);
                 }
             } else {
                 if (getIndex() <= 39) {
-                    ret =  commands.get(index);
+                    ret =  commands.get(getIndex());
                 } else {
                     ret = commands.get(39);
                 }
@@ -80,6 +89,7 @@ public class CommandLog {
 
     public void resetIndex() {
         index = 0;
+        first = true;
     }
 
 }

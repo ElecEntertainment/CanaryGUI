@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>CanaryGUI</groupId>
 	<artifactId>CanaryGUI</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -78,8 +78,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>net.canarymod</groupId>
-            <artifactId>CanaryLib</artifactId>
-            <version>0.8-SNAPSHOT</version>
+			<artifactId>CanaryLib</artifactId>
+			<version>0.8-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
