@@ -1,4 +1,4 @@
-package net.larry1123.gui.player;
+package net.larry1123.gui.updaters;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +15,7 @@ public class Reloader implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         for (Reload updated : updaters) {
-            updated.reset();
+            updated.reload();
         }
     }
 

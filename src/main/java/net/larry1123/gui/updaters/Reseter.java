@@ -1,4 +1,4 @@
-package net.larry1123.gui.player;
+package net.larry1123.gui.updaters;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

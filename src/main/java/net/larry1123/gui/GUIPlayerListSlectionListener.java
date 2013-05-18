@@ -5,6 +5,7 @@ import javax.swing.event.ListSelectionListener;
 
 import net.canarymod.Canary;
 import net.canarymod.api.entity.living.humanoid.Player;
+import net.canarymod.config.Configuration;
 import net.canarymod.logger.Logman;
 
 public class GUIPlayerListSlectionListener implements
@@ -28,11 +29,13 @@ ListSelectionListener {
             Logman.getLogman("Box").info((String) playerBox.getSelectedValue());
             Player test = Canary.getServer().getPlayer((String) playerBox.getSelectedValue());
             if (test == null) {
-                Logman.getLogman("GUI").info("DERP");
+                if (Configuration.getServerConfig().isDebugMode()) {
+                    Logman.getLogman("GUI").logDerp("Null Player from list!");
+                }
             } else {
                 Logman.getLogman("GUI").info(test.getName());
+                playersettingsbox = new PlayerSettings(test);
             }
-            playersettingsbox = new PlayerSettings(test);
         }
     }
 

@@ -2,28 +2,34 @@ package net.larry1123.gui.player;
 
 import javax.swing.JTextField;
 
-import net.canarymod.api.entity.living.humanoid.Player;
+import net.larry1123.gui.PlayerSettings;
+import net.larry1123.gui.updaters.Reload;
+import net.larry1123.gui.updaters.Reset;
+import net.larry1123.gui.updaters.Save;
 
 public class DisplayName extends JTextField implements Reload, Save, Reset {
 
-    private final Player player;
+    private final PlayerSettings playerSettings;
 
-    public DisplayName(Player player) {
-        Reloader.addUpdater(this);
-        Saver.addSaver(this);
-        Reseter.addReset(this);
-        this.player = player;
+    public DisplayName(PlayerSettings playerSettings) {
+        this.playerSettings = playerSettings;
+        this.playerSettings.getUpdater().addUpdater(this);
         reset();
     }
 
     @Override
     public void save() {
-        player.setDisplayName(this.getText());
+        playerSettings.getPlayer().setDisplayName(this.getText());
     }
 
     @Override
     public void reset() {
-        setText(player.getDisplayName());
+        setText(playerSettings.getPlayer().getDisplayName());
+    }
+
+    @Override
+    public void reload() {
+        reset();
     }
 
 }

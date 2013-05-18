@@ -5,12 +5,11 @@ import java.awt.Button;
 import java.awt.Component;
 import java.awt.Label;
 import java.awt.Panel;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
@@ -22,17 +21,21 @@ import javax.swing.border.EmptyBorder;
 
 import net.canarymod.api.entity.living.humanoid.Player;
 import net.larry1123.gui.player.DisplayName;
+import net.larry1123.gui.player.GameModes;
 import net.larry1123.gui.player.Health;
-import net.larry1123.gui.player.Reloader;
-import net.larry1123.gui.player.Reseter;
-import net.larry1123.gui.player.Saver;
+import net.larry1123.gui.player.WindowChangeEvent;
+import net.larry1123.gui.updaters.Reloader;
+import net.larry1123.gui.updaters.Reseter;
+import net.larry1123.gui.updaters.Saver;
+import net.larry1123.gui.updaters.Updater;
 
 public class PlayerSettings extends JFrame {
 
     private final JPanel contentPane;
-    private final Player player;
+    private Player player; // Needed to make this no longer final because the player needs to be able to change!
     private final Health txtA;
     private final DisplayName txtA_1;
+    private Updater updater = new Updater();
 
     /**
      * Create the frame.
@@ -40,13 +43,7 @@ public class PlayerSettings extends JFrame {
     public PlayerSettings(Player play) {
         setResizable(false);
         GUIPlayerListSlectionListener.isRunning = true;
-        addWindowListener(new WindowAdapter() {
-
-            @Override
-            public void windowClosed(WindowEvent arg0) {
-                GUIPlayerListSlectionListener.isRunning = false;
-            }
-        });
+        addWindowListener(new WindowChangeEvent());
         player = play;
         setTitle("Player: " + player.getName());
 
@@ -94,7 +91,7 @@ public class PlayerSettings extends JFrame {
             Label label = new Label("Health");
             splitPane.setLeftComponent(label);
 
-            txtA = new Health(player);
+            txtA = new Health(this);
             splitPane.setRightComponent(txtA);
             txtA.setColumns(10);
         }
@@ -109,7 +106,7 @@ public class PlayerSettings extends JFrame {
             JLabel lblNewLabel = new JLabel("Display Name");
             splitPane_1.setLeftComponent(lblNewLabel);
 
-            txtA_1 = new DisplayName(player);
+            txtA_1 = new DisplayName(this);
             splitPane_1.setRightComponent(txtA_1);
             txtA_1.setColumns(10);
         }
@@ -117,7 +114,18 @@ public class PlayerSettings extends JFrame {
         Component horizontalStrut_2 = Box.createHorizontalStrut(20);
         panel.add(horizontalStrut_2);
 
+        JList list = new GameModes(this);
+        panel.add(list);
+
         setVisible(true);
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Updater getUpdater() {
+        return updater;
     }
 
 }
