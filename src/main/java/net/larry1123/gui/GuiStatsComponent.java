@@ -14,7 +14,7 @@ import net.canarymod.api.world.World;
 
 public class GuiStatsComponent extends JComponent {
 
-    private static final DecimalFormat a = new DecimalFormat("########0.000");
+    private static final DecimalFormat decimalFormat = new DecimalFormat("########0.000");
 
     // $FF: synthetic method
     static void a(GuiStatsComponent var0) {
@@ -39,9 +39,9 @@ public class GuiStatsComponent extends JComponent {
         System.gc();
         d[0] = "Memory use: " + (i0 / 1024L / 1024L) + " mb (" + ((Runtime.getRuntime().freeMemory() * 100L) / Runtime.getRuntime().maxMemory()) + "% free)";
         d[1] = "Threads: " + Canary.getServer().getTcpReaderThreadCount() + " + " + Canary.getServer().getTcpWriterThreadCount();
-        d[2] = "Avg tick: " + a.format(this.a(Canary.getServer().getTickTimeArray()) * 1.0E-6D) + " ms";
-        d[3] = "Avg sent: " + (int) this.a(Canary.getServer().getSentPacketCountArray()) + ", Avg size: " + (int) this.a(Canary.getServer().getSentPacketSizeArray());
-        d[4] = "Avg rec: " + (int) this.a(Canary.getServer().getReceivedPacketCountArray()) + ", Avg size: " + (int) this.a(Canary.getServer().getReceivedPacketSizeArray());
+        d[2] = "Avg tick: " + decimalFormat.format(this.convertArrayToAmout(Canary.getServer().getTickTimeArray()) * 1.0E-6D) + " ms";
+        d[3] = "Avg sent: " + (int) this.convertArrayToAmout(Canary.getServer().getSentPacketCountArray()) + ", Avg size: " + (int) this.convertArrayToAmout(Canary.getServer().getSentPacketSizeArray());
+        d[4] = "Avg rec: " + (int) this.convertArrayToAmout(Canary.getServer().getReceivedPacketCountArray()) + ", Avg size: " + (int) this.convertArrayToAmout(Canary.getServer().getReceivedPacketSizeArray());
 
         // CanaryMod: Multiworld
         Collection<World> worlds = Canary.getServer().getWorldManager().getAllWorlds();
@@ -51,17 +51,17 @@ public class GuiStatsComponent extends JComponent {
 
             for (World world : worlds) {
 
-                d[5 + i] = "World " + world.getName() + " lvl " + i + " tick " + a.format(world.getNanoTick(i) * 1.0E-6D) + " ms";
+                d[5 + i] = "World " + world.getName() + " lvl " + i + " tick " + decimalFormat.format(world.getNanoTick(i) * 1.0E-6D) + " ms";
                 i++;
             }
         }
         //
 
-        b[c++ & 255] = (int) ((this.a(Canary.getServer().getSentPacketSizeArray()) * 100.0D) / 12500.0D);
+        b[c++ & 255] = (int) ((this.convertArrayToAmout(Canary.getServer().getSentPacketSizeArray()) * 100.0D) / 12500.0D);
         this.repaint();
     }
 
-    private double a(long[] var1) {
+    private double convertArrayToAmout(long[] var1) {
         long var2 = 0L;
 
         for (int var4 = 0; var4 < var1.length; ++var4) {
