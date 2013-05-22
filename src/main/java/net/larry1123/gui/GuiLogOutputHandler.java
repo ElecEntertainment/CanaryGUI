@@ -6,16 +6,20 @@ import java.util.logging.LogRecord;
 
 import javax.swing.JTextArea;
 
+import net.canarymod.Canary;
+
 public class GuiLogOutputHandler extends Handler {
 
     private final int[] b = new int[1024];
     private int c = 0;
     Formatter a = new GuiLogFormatter(this);
-    private final JTextArea d;
+    private final JTextArea textArea;
 
     public GuiLogOutputHandler(JTextArea var1) {
         setFormatter(a);
-        d = var1;
+        textArea = var1;
+        textArea.setText(Canary.getServer().getServerGUILog());
+        textArea.setCaretPosition(textArea.getDocument().getLength());
     }
 
     @Override
@@ -28,12 +32,12 @@ public class GuiLogOutputHandler extends Handler {
 
     @Override
     public void publish(LogRecord var1) {
-        int var2 = d.getDocument().getLength();
-        d.append(a.format(var1));
-        d.setCaretPosition(d.getDocument().getLength());
-        int var3 = d.getDocument().getLength() - var2;
+        int var2 = textArea.getDocument().getLength();
+        textArea.append(a.format(var1));
+        textArea.setCaretPosition(textArea.getDocument().getLength());
+        int var3 = textArea.getDocument().getLength() - var2;
         if (b[c] != 0) {
-            d.replaceRange("", 0, b[c]);
+            textArea.replaceRange("", 0, b[c]);
         }
 
         b[c] = var3;
