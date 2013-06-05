@@ -23,6 +23,7 @@ public class GameModes extends JList implements Reload, Save, Reset {
             gameModeList.add(mode.name());
         }
         setListData(gameModeList);
+        reset();
     }
 
     @Override

@@ -7,6 +7,7 @@ import java.util.logging.LogRecord;
 import javax.swing.JTextArea;
 
 import net.canarymod.Canary;
+import net.canarymod.config.Configuration;
 
 public class GuiLogOutputHandler extends Handler {
 
@@ -33,7 +34,13 @@ public class GuiLogOutputHandler extends Handler {
     @Override
     public void publish(LogRecord var1) {
         int var2 = textArea.getDocument().getLength();
-        textArea.append(a.format(var1));
+        try {
+            textArea.append(a.format(var1));
+        } catch (Error error) {
+            if (Configuration.getServerConfig().isDebugMode()) {
+                error.printStackTrace();
+            }
+        }
         textArea.setCaretPosition(textArea.getDocument().getLength());
         int var3 = textArea.getDocument().getLength() - var2;
         if (b[c] != 0) {
