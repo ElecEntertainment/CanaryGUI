@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import javax.swing.JList;
 
-import net.canarymod.api.world.World.GameMode;
+import net.canarymod.api.GameMode;
 import net.larry1123.gui.PlayerSettings;
 import net.larry1123.gui.updaters.Reload;
 import net.larry1123.gui.updaters.Reset;
@@ -28,12 +28,12 @@ public class GameModes extends JList implements Reload, Save, Reset {
 
     @Override
     public void reset() {
-        this.setSelectedValue(GameMode.fromId(playerSettings.getPlayer().getMode()).name(), true);
+        this.setSelectedValue(playerSettings.getPlayer().getMode().name(), true);
     }
 
     @Override
     public void save() {
-        playerSettings.getPlayer().setMode(GameMode.valueOf((String) this.getSelectedValue()).getId());
+        playerSettings.getPlayer().setMode(GameMode.valueOf((String) this.getSelectedValue()));
     }
 
     @Override

@@ -1,7 +1,6 @@
 package net.larry1123.gui;
 
 import java.util.LinkedList;
-import java.util.logging.Logger;
 
 public class CommandLog {
 
@@ -47,7 +46,6 @@ public class CommandLog {
     public String nextCommand() {
         String ret = "";
         try {
-            Logger.getLogger("GUI").info("" + getIndex());
             if (getIndex() - 1 <= commands.size()) {
                 if (getIndex() <= 39) {
                     if (first) {
@@ -57,7 +55,6 @@ public class CommandLog {
                         ret = commands.get(getIndex() + 1);
                         index++;
                     }
-                    Logger.getLogger("GUI").info("" + getIndex());
                 } else {
                     ret = commands.get(39);
                 }
