@@ -31,14 +31,14 @@ public class CanaryGUI extends UtilPlugin implements TaskOwner {
     public boolean enable() {
         Canary.hooks().registerListener(new CanaryGUIHookListener(), this);
         ServerTaskManager.addTask(ticksystem);
-        logger.info("Plugin Enabled");
+        getLogger().info("Plugin Enabled");
         return true;
     }
 
     @Override
     public void disable() {
         ServerTaskManager.removeTasksForPlugin(this);
-        logger.info("Plugin Disabled");
+        getLogger().info("Plugin Disabled");
     }
 
 }
