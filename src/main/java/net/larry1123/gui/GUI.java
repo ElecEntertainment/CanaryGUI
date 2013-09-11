@@ -69,7 +69,7 @@ public class GUI extends JComponent implements GUIControl {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception var3) {
-            ;
+            //
         }
 
         GUI canarygui = net.larry1123.CanaryGUI.canarygui;

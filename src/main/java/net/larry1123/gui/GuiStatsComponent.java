@@ -64,8 +64,8 @@ public class GuiStatsComponent extends JComponent {
     private double convertArrayToAmout(long[] var1) {
         long var2 = 0L;
 
-        for (int var4 = 0; var4 < var1.length; ++var4) {
-            var2 += var1[var4];
+        for (long aVar1 : var1) {
+            var2 += aVar1;
         }
 
         return (double) var2 / (double) var1.length;

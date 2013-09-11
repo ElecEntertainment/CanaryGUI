@@ -7,6 +7,7 @@ import net.canarymod.Canary;
 import net.canarymod.api.entity.living.humanoid.Player;
 import net.canarymod.config.Configuration;
 import net.canarymod.logger.Logman;
+import net.larry1123.gui.player.PlayerSettings;
 
 public class GUIPlayerListSlectionListener implements
 ListSelectionListener {

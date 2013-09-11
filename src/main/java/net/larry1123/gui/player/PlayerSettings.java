@@ -1,15 +1,14 @@
-package net.larry1123.gui;
+package net.larry1123.gui.player;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.Choice;
 import java.awt.Component;
 import java.awt.Label;
 import java.awt.Panel;
-
 import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
@@ -18,12 +17,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
-
 import net.canarymod.api.entity.living.humanoid.Player;
-import net.larry1123.gui.player.DisplayName;
-import net.larry1123.gui.player.GameModes;
-import net.larry1123.gui.player.Health;
-import net.larry1123.gui.player.WindowChangeEvent;
+import net.larry1123.gui.GUIPlayerListSlectionListener;
 import net.larry1123.gui.updaters.Reloader;
 import net.larry1123.gui.updaters.Reseter;
 import net.larry1123.gui.updaters.Saver;
@@ -114,7 +109,7 @@ public class PlayerSettings extends JFrame {
         Component horizontalStrut_2 = Box.createHorizontalStrut(20);
         panel.add(horizontalStrut_2);
 
-        JList list = new GameModes(this);
+        Choice list = new GameModes(this);
         panel.add(list);
 
         setVisible(true);

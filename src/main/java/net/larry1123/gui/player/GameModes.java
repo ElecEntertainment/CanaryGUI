@@ -1,16 +1,12 @@
 package net.larry1123.gui.player;
 
-import java.util.Vector;
-
-import javax.swing.JList;
-
+import java.awt.Choice;
 import net.canarymod.api.GameMode;
-import net.larry1123.gui.PlayerSettings;
 import net.larry1123.gui.updaters.Reload;
 import net.larry1123.gui.updaters.Reset;
 import net.larry1123.gui.updaters.Save;
 
-public class GameModes extends JList implements Reload, Save, Reset {
+public class GameModes extends Choice implements Reload, Save, Reset {
 
     private final PlayerSettings playerSettings;
 
@@ -18,22 +14,20 @@ public class GameModes extends JList implements Reload, Save, Reset {
         this.playerSettings = playerSettings;
         this.playerSettings.getUpdater().addUpdater(this);
 
-        Vector<String> gameModeList = new Vector<String>();
         for (GameMode mode : GameMode.values()) {
-            gameModeList.add(mode.name());
+            add(mode.name());
         }
-        setListData(gameModeList);
         reset();
     }
 
     @Override
     public void reset() {
-        this.setSelectedValue(playerSettings.getPlayer().getMode().name(), true);
+        this.select(playerSettings.getPlayer().getMode().name());
     }
 
     @Override
     public void save() {
-        playerSettings.getPlayer().setMode(GameMode.valueOf((String) this.getSelectedValue()));
+        playerSettings.getPlayer().setMode(GameMode.valueOf(this.getSelectedItem()));
     }
 
     @Override

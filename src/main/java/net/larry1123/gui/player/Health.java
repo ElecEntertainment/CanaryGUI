@@ -1,8 +1,6 @@
 package net.larry1123.gui.player;
 
 import javax.swing.JTextField;
-
-import net.larry1123.gui.PlayerSettings;
 import net.larry1123.gui.updaters.Reload;
 import net.larry1123.gui.updaters.Reset;
 import net.larry1123.gui.updaters.Save;
@@ -24,8 +22,8 @@ public class Health extends JTextField implements Reload, Save, Reset {
 
     @Override
     public void save() {
-        int health = Integer.parseInt(this.getText());
-        if (health < Short.MAX_VALUE) {
+        float health = Float.parseFloat(this.getText());
+        if (health < Float.MAX_VALUE) {
             playerSettings.getPlayer().setHealth(health);
         } else {
             playerSettings.getPlayer().setHealth(Short.MAX_VALUE);

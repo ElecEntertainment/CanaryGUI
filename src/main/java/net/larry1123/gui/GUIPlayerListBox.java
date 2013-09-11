@@ -1,5 +1,6 @@
 package net.larry1123.gui;
 
+import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.JList;
@@ -29,9 +30,7 @@ public class GUIPlayerListBox extends JList implements net.larry1123.gui.tick.Ti
     public void updatePlayerList() {
         if ((b++ % 20) == 0) {
             playerList.clear();
-            for (String player : Canary.getServer().getPlayerNameList()) {
-                playerList.add(player);
-            }
+            Collections.addAll(playerList, Canary.getServer().getPlayerNameList());
             this.setListData(playerList);
         }
     }

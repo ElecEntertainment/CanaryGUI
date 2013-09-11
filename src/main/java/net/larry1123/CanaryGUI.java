@@ -7,7 +7,7 @@ import net.canarymod.plugin.PluginListener;
 import net.canarymod.tasks.ServerTaskManager;
 import net.canarymod.tasks.TaskOwner;
 import net.larry1123.gui.tick.UpdateTask;
-import net.larry1123.lib.plugin.UtilPlugin;
+import net.larry1123.util.plugin.UtilPlugin;
 
 public class CanaryGUI extends UtilPlugin implements TaskOwner {
 

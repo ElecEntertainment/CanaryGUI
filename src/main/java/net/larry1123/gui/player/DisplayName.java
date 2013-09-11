@@ -2,7 +2,6 @@ package net.larry1123.gui.player;
 
 import javax.swing.JTextField;
 
-import net.larry1123.gui.PlayerSettings;
 import net.larry1123.gui.updaters.Reload;
 import net.larry1123.gui.updaters.Reset;
 import net.larry1123.gui.updaters.Save;

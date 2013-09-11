@@ -74,7 +74,10 @@
             <dependency>
                 <groupId>net.canarymod</groupId>
                 <artifactId>CanaryLib</artifactId>
-                <version>0.10-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>net.larry1123</groupId>
+                <artifactId>CanaryUtil</artifactId>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -82,12 +85,12 @@
         <dependency>
             <groupId>net.canarymod</groupId>
             <artifactId>CanaryLib</artifactId>
-            <version>0.10-SNAPSHOT</version>
+            <version>1.0-RC-2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>net.larry1123</groupId>
             <artifactId>CanaryUtil</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <version>0.1.5-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
