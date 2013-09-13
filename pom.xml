@@ -41,14 +41,6 @@
                     </archive>
                 </configuration>
             </plugin>
-            <!-- Assembly -->
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.2-beta-2</version>
-                <configuration>
-                    <descriptor>${basedir}/src/main/assembly/default.xml</descriptor>
-                </configuration>
-            </plugin>
             <!-- Release -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -74,10 +66,12 @@
             <dependency>
                 <groupId>net.canarymod</groupId>
                 <artifactId>CanaryLib</artifactId>
+                <version>1.0-RC-2-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>net.larry1123</groupId>
                 <artifactId>CanaryUtil</artifactId>
+                <version>0.1.5-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
